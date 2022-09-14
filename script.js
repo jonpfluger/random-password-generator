@@ -9,9 +9,9 @@ var specialChars = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", 
 
 // prompts the user to choose a password length
 function generatePassword() {
-  var lengthQuestion = Number(prompt("How many characters do you want your password to be? (Between 8 and 128 digits)"));
-  while (lengthQuestion < 8 || lengthQuestion > 128) {
-    lengthQuestion = Number(prompt("How many characters do you want your password to be? (Between 8 and 128 digits)"));
+  var passwordLength = Number(prompt("How many characters do you want your password to be? (Between 8 and 128 digits)"));
+  while (passwordLength < 8 || passwordLength > 128) {
+    passwordLength = Number(prompt("How many characters do you want your password to be? (Between 8 and 128 digits)"));
   }
 
   // confirm character types
@@ -22,19 +22,33 @@ function generatePassword() {
   numbers = confirm("Do you want your password to include numbers?");
   
   special = confirm("Do you want your password to include special characters?");
-}
+};
 
-// var result = "";
+var combined = "";
 
-// if else
-// return result;
-
-for (var i = 0; i <= 10; i++) {
-  if () {
-    
-  } else if () {
-    
-  }
+for (var i = 0; i <= passwordLength.length; i++) {
+  if (lower === true && upper === true && numbers === true && special === true) {
+    var all = lowerChars.concat(upperChars, numberChars, specialChars);
+    var randomAll = all[Math.floor(Math.random() * all.length)];
+    combined += randomAll;
+  } else if (lower === true && upper === true && numbers === true && special === false) {
+    var lowerUpperNumber = lowerChars.concat(upperChars, numberChars);
+    var randomLowerUpperNumber = lowerUpperNumber[Math.floor(Math.random() * lowerUpperNumber.length)];
+    combined += randomLowerUpperNumber;
+  } else if (lower === true && upper === true && numbers === false && special === true) {
+    var lowerUpperSpecial = lowerChars.concat(upperChars, specialChars);
+    var randomLowerUpperSpecial = lowerUpperSpecial[Math.floor(Math.random() * lowerUpperSpecial.length)];
+    combined += randomLowerUpperSpecial;
+  } else if (lower === true && upper === false && numbers === true && special === true) {
+    var lowerNumberSpecial = lowerChars.concat(numberChars, specialChars);
+    var randomLowerNumberSpecial = lowerNumberSpecial[Math.floor(Math.random() * lowerNumberSpecial.length)];
+    combined += randomLowerNumberSpecial;
+  } else if (lower === false && upper === true && numbers === true && special === true) {
+    var upperNumberSpecial = upperChars.concat(numberChars, specialChars);
+    var randomUpperNumberSpecial = upperNumberSpecial[Math.floor(Math.random() * upperNumberSpecial.length)];
+    combined += randomUpperNumberSpecial;
+  } return combined;
+};
 
 
 
